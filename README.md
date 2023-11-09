@@ -12,6 +12,8 @@ $ python3 sbom.py /home/alice/code/repos/
 
 The specified directory should contain one or more subdirectories, each of which must contain either a requirements.txt or a package.json file. If any subdirectory does not contain one of these two files, the program will display a message in the terminal indicating the directory that is missing the file.
 
+A example directory is available as well, togheter with the output csv and json output files that comes with running the program on this example directory.
+
 ## Additional Features
 
 There are two additional features implemented in this code:
