@@ -1,0 +1,3 @@
+Name,Version,type,path,Bugs URL,Repository
+mender-gui,1.0.0,npm,/Users/jacobellis/Documents/EgenArbeid/Repo/pacagefolder/package.json,https://northerntech.atlassian.net/projects/MEN,git+https://github.com/mendersoftware/gui.git
+apache-libcloud,3.3.1,pip,/Users/jacobellis/Documents/EgenArbeid/Repo/reqfolder/requirements.txt

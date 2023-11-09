@@ -10,13 +10,19 @@ def extract_info(path, csv_writer, json_data):
                 if filename.endswith(".txt"):
                     name, version = f.read().split("==")
                     t = "pip"
+                    csv_writer.writerow([name, version, t, file_path])
+                    json_data.append({"name": name, "version": version, "type": t, "path": file_path})
                 else:
                     data = json.load(f)
                     name = data["name"]
                     version = data["version"]
                     t = "npm"
-                csv_writer.writerow([name, version, t, file_path])
-                json_data.append({"name": name, "version": version, "type": t, "path": file_path})
+                    bugs_url = data.get("bugs", {}).get("url", "")
+                    repository = data.get("repository", {}).get("url", "")
+                    csv_writer.writerow([name, version, t, file_path, bugs_url, repository])
+                    json_data.append({"name": name, "version": version, "type": t, "path": file_path, "bugs_url": bugs_url, "Repository": repository})
+                
+                
     
     #Sends a message to user in case they have forgoten to add the must have files to the direcotry
     if contains is False:
@@ -27,7 +33,7 @@ def main(path):
     json_data = []
     with open(os.path.join(path, "sbom.csv"), "w") as csv_file:
         csv_writer = csv.writer(csv_file)
-        csv_writer.writerow(["Name", "Version", "type", "path"])
+        csv_writer.writerow(["Name", "Version", "type", "path", "Bugs URL", "Repository"])
         
         for dir_name in os.listdir(path):
             new_dir_path = os.path.join(path, dir_name)
